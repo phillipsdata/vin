@@ -1,13 +1,22 @@
-# PhillipsData\Vin
+# VIN
+
+[![Build Status](https://travis-ci.org/phillipsdata/vin.svg?branch=master)](https://travis-ci.org/phillipsdata/vin) [![Coverage Status](https://coveralls.io/repos/phillipsdata/vin/badge.svg)](https://coveralls.io/r/phillipsdata/vin)
 
 VIN (Vehicle Identification Number) validation and diagnostic library.
+
+### Features
+
+- Validates North American VIN numbers.
+- Returns all possible years of manfacture for North American VIN numbers.
+- Returns the country of manufacturer for VINs defined by ISO 3779.
+- Supports custom readers for validating VINs outside of North America.
 
 ## Installation
 
 Install via composer:
 
-```php
-composer require phillipsdata\vin
+```sh
+composer require phillipsdata/vin
 ```
 
 ## Basic Usage
@@ -15,7 +24,7 @@ composer require phillipsdata\vin
 ```php
 use PhillipsData\Vin\Number;
 
-$vin = new Number('1M8GDM9AXKP042788);
+$vin = new Number('1M8GDM9AXKP042788');
 
 $vin->valid(); // returns whether the VIN is valid
 $vin->country(); // returns the ISO 3166 country code for the country of origin
@@ -27,7 +36,7 @@ $vin->year(); // returns an array of possible manufacturer years
 ## Advanced Usage
 
 You can supply your own VIN reader. This allows you to implement a VIN reader
-for vehicles manufactured in other countries.
+for vehicles manufactured in other countries (outside of North America).
 
 ```php
 use PhillipsData\Vin\Number;
@@ -45,5 +54,3 @@ implementations for unsupported regions.
 
 We'd also love for this library to support extracting Manufacturer (e.g. Ford, Chevrolet, etc.)
 based on the SAE's assignment of world manufacturer identifiers.
-
-
